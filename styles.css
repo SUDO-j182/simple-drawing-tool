@@ -41,7 +41,7 @@ header {
     flex-wrap: wrap;
     justify-content: center;
     gap: 5px;
-    margin: 10px, auto;
+    margin: 10px auto; /*REMOVED COMMA, PALETTE NOW IN LINE WITH THE GRID*/
     width: 350px;
 }
 
@@ -49,5 +49,29 @@ header {
     width: 30px;
     height: 30px;
     border: 2px solid black;
+    cursor: pointer;
+}
+                                         /*STYLED CLEAR GRID BUTTON TO MATCH HEADER*/
+#clear-grid {
+    font-family: 'Press Start 2p';
+    background-color: cyan;
+    color: yellow;
+    border: 2px solid yellow;
+    padding: 10px;
+    margin: 10px auto;
+    display: block;
+    text-align: center;
+    cursor: pointer;
+}
+
+#toggle-line-mode {                    /*STYLED TOGGLE LINE BUTTON TO MATCH THEME*/
+    font-family: 'Press Start 2p';
+    background-color: cyan;
+    color: yellow;
+    border: 2px solid yellow;
+    padding: 10px;
+    margin: 10px auto;
+    display: block;
+    text-align: center;
     cursor: pointer;
 }
