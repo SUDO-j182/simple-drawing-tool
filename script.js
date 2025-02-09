@@ -89,23 +89,30 @@ function drawLine(start, end) {
     const gridCells = Array.from(document.querySelectorAll('.grid-cell'));
     const startIndex = gridCells.indexOf(start);
     const endIndex = gridCells.indexOf(end);
-    const gridSize = 16;
+
+    const gridSize = 16; 
+
     const startRow = Math.floor(startIndex / gridSize);
     const startCol = startIndex % gridSize;
     const endRow = Math.floor(endIndex / gridSize);
     const endCol = endIndex % gridSize;
 
+    console.log(`Start: (Row ${startRow}, Column ${startCol})`);
+    console.log(`End: (Row ${endRow}, Column ${endCol})`);
+
     if (startRow === endRow) {
-        const minCol = Math.min(startCol, endCol);
-        const mazCol = Math.max(startCol, endCol);
+        console.log("Drawing a horizontal line...");
+        let minCol = Math.min(startCol, endCol);  
+        let maxCol = Math.max(startCol, endCol);  
         for (let col = minCol; col <= maxCol; col++) {
             gridCells[startRow * gridSize + col].style.backgroundColor = currentColor;
         }
     } else if (startCol === endCol) {
-        const minRow = Math.min(startRow, endRow);
-        const maxRow = Math.max(startRow, endRow);
+        console.log("Drawing a vertical line...");
+        let minRow = Math.min(startRow, endRow);
+        let maxRow = Math.max(startRow, endRow);
         for (let row = minRow; row <= maxRow; row++) {
-            gridCells[row * gridSize + startCol].style.backgroundColor = currentColor
+            gridCells[row * gridSize + startCol].style.backgroundColor = currentColor;
         }
     }
 }
