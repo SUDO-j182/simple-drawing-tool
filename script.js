@@ -106,7 +106,7 @@ function drawLine(start, end) {
         let maxCol = Math.max(startCol, endCol);  
         for (let col = minCol; col <= maxCol; col++) {
             gridCells[startRow * gridSize + col].style.backgroundColor = currentColor;
-        }
+        }                                                    
     } else if (startCol === endCol) {
         console.log("Drawing a vertical line...");
         let minRow = Math.min(startRow, endRow);
@@ -116,3 +116,31 @@ function drawLine(start, end) {
         }
     }
 }
+
+document.getElementById('toggle-grid').addEventListener('click', () => {        //LISTENS FOR BUTTON CLICKS, HIDES AND REVEALS GRID
+    document.querySelectorAll('.grid-cell').forEach(cell => {
+        if (cell.style.border === "none" || cell.style.border === "") {
+            cell.style.border = "2px solid black";
+        } else {
+            cell.style.border = "none";
+        }
+    });
+});
+
+document.querySelectorAll('.grid-cell').forEach(cell => {
+    let originalcolor = "";
+
+    cell.addEventListener('mouseover', () => {
+        if (currentColor !== null) {
+            originalcolor = cell.style.backgroundColor;
+            cell.style.backgroundColor = currentColor;
+            cell.style.opacity = "0.5";
+        }
+
+    });
+
+    cell.addEventListener('mouseout', () => {
+        cell.style.backgroundColor = originalcolor;
+        cell.style.opacity = "1";
+    })
+})

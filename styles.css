@@ -75,3 +75,15 @@ header {
     text-align: center;
     cursor: pointer;
 }
+
+#toggle-grid {
+    font-family: 'Press Start 2P';
+    background-color: cyan;
+    color: yellow;
+    border: 2px solid yellow;
+    padding: 10px;
+    margin: 10px auto;
+    display: block;
+    text-align: center;
+    cursor: pointer;
+}
