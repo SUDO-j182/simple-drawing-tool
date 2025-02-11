@@ -14,9 +14,17 @@ for (let i = 0; i < 256; i++) {
 
 const colorPalette = document.querySelector('.color-palette'); 
 let currentColor = "#000000";
-
+let isMouseDown = false;
 let lineMode = false;                        //ADDED TOGGLE FOR LINE MODE
 let startCell = null;
+
+document.addEventListener('mousedown', () => {
+    isMouseDown = true;
+});
+
+document.addEventListener('mouseup', () => {
+    isMouseDown = false;
+});
 
 document.getElementById('toggle-line-mode').addEventListener('click', () => {
     lineMode = !lineMode;
@@ -128,19 +136,37 @@ document.getElementById('toggle-grid').addEventListener('click', () => {        
 });
 
 document.querySelectorAll('.grid-cell').forEach(cell => {
-    let originalcolor = "";
+    let originalColor = "";
+    let isColored = false;  
 
+    
     cell.addEventListener('mouseover', () => {
-        if (currentColor !== null) {
-            originalcolor = cell.style.backgroundColor;
+        if (currentColor !== null && !isColored) {
+            originalColor = cell.style.backgroundColor;
             cell.style.backgroundColor = currentColor;
             cell.style.opacity = "0.5";
         }
-
+        if (isMouseDown && currentColor !== null) {
+            cell.style.backgroundColor = currentColor;
+            cell.style.opacity = "1";
+            isColored = true;
+        }
     });
 
+    
     cell.addEventListener('mouseout', () => {
-        cell.style.backgroundColor = originalcolor;
-        cell.style.opacity = "1";
-    })
-})
+        if (!isColored) {
+            cell.style.backgroundColor = originalColor;
+            cell.style.opacity = "1";
+        }
+    });
+
+    
+    cell.addEventListener('mousedown', () => {
+        if (currentColor !== null) {
+            cell.style.backgroundColor = currentColor;
+            cell.style.opacity = "1"; 
+            isColored = true;  
+        }
+    });
+});

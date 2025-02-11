@@ -21,7 +21,15 @@ header {
     border: 5px solid rgb(255, 238, 2);
 }
 
+.grid-wrapper {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 .drawing-grid-container {
+    position: relative;
     display: grid;
     grid-template-rows: repeat(16, 20px);
     grid-template-columns: repeat(16, 20px);
@@ -76,7 +84,7 @@ header {
     cursor: pointer;
 }
 
-#toggle-grid {
+#toggle-grid {                             /*STYLED THE TOGGLE GRID BUTTON FOR CORRESPONDANCE*/
     font-family: 'Press Start 2P';
     background-color: cyan;
     color: yellow;
@@ -84,6 +92,25 @@ header {
     padding: 10px;
     margin: 10px auto;
     display: block;
+    text-align: center;
+    cursor: pointer;
+}
+
+.button-container {
+    position: absolute;
+    bottom: 0px;
+    right: 5px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+#save-art, #load-art {
+    font-family: 'Press Start 2P';
+    background-color:cyan;
+    color: yellow;
+    border: 2px solid yellow;
+    padding: 10px;
     text-align: center;
     cursor: pointer;
 }
