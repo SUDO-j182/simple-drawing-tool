@@ -101,7 +101,7 @@ header {
 .button-container {
     position: absolute;
     bottom: 0px;
-    right: -150px;
+    right: -210px;
     display: flex;
     flex-direction: column;
     gap: 10px;
@@ -115,4 +115,15 @@ header {
     padding: 10px;
     text-align: center;
     cursor: pointer;
+}
+
+#export-art {
+    font-family: 'Press Start 2P';
+    background-color: cyan;
+    color: yellow;
+    border: 2px solid yellow;
+    padding: 10px;
+    text-align: center;
+    cursor: pointer;
+    display: block;
 }

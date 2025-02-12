@@ -170,3 +170,15 @@ document.querySelectorAll('.grid-cell').forEach(cell => {
         }
     });
 });
+
+document.getElementById('export-art').addEventListener('click', () => {
+    const grid = document.querySelector('.drawing-grid-container');
+
+    html2canvas(grid).then(canvas => {
+        let link = document.createElement('a');
+        link.download = 'pixel-art.png';
+        link.href = canvas.toDataURL("image/png");
+        link.click();
+    });
+    console.log("Pixel art exported!");
+});
