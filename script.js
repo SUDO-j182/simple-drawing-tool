@@ -182,3 +182,27 @@ document.getElementById('export-art').addEventListener('click', () => {
     });
     console.log("Pixel art exported!");
 });
+
+document.getElementById('save-art').addEventListener('click', () => {
+    let savedGrid = [];
+
+    document.querySelectorAll('.grid-cell').forEach(cell => {
+        savedGrid.push(cell.style.backgroundColor || "");
+    });
+
+    localStorage.setItem("pixelArt", JSON.stringify(savedGrid));
+    console.log("Pixel art saved!");
+});
+
+document.getElementById('load-art').addEventListener('click', () => {
+    let savedGrid = JSON.parse(localStorage.getItem("pixelArt"));
+
+    if (savedGrid) {
+        document.querySelectorAll('.grid-cell').forEach((cell, index) => {
+            cell.style.backgroundColor = savedGrid[index]; 
+        });
+        console.log("Pixel art loaded!");
+    } else {
+        console.log("No saved pixel art found.");
+    }
+});
