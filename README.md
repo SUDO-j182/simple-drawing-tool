@@ -1,5 +1,13 @@
-# simple-drawing-tool
-My Third project serving to solidify my knowledge and skills with HTML and CSS while introducing me to JavaScript and providing a learning experience.  
+# TODO:
 
+Add signiture styles and ASCII elements.
 
-***IMPROVE UI FEATURES***
+Add feature to change the grid size between 16x16, 32x32, 64x64.
+
+Implement line drag feature to drag a straight/diagonal line from point A to B in any direction.
+
+Add flood fill feature (colour fill).
+
+Add dither feature.
+
+Explore sprite animation.
