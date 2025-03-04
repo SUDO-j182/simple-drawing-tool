@@ -106,8 +106,8 @@ header {
 
 .button-container {
     position: absolute;
-    bottom: -330px;
-    left: 387px;
+    bottom: -326px;
+    right: 387px;
     display: flex;
     flex-direction: column;
     gap: 10px;
