@@ -19,6 +19,25 @@ header {
     margin: 20px 10px 10px 10px;
 }
 
+.dropdown-container {
+    font-family: 'Press Start 2p';
+    color: yellow;
+    display: block;
+    text-align: left;
+    cursor: pointer;
+    text-shadow: 2px 0 black, -2px 0 black, 0 2px black, 0 -2px black,
+    1px 1px black, -1px -1px black, 1px -1px black, -1px 1px black;
+}
+#grid-size {
+    color: yellow;
+    background-color: cyan;
+    text-shadow: 2px 0 black, -2px 0 black, 0 2px black, 0 -2px black,
+    1px 1px black, -1px -1px black, 1px -1px black, -1px 1px black;
+    border: 2px solid black;
+    cursor: pointer;
+}
+
+
 .header-title {
     color: yellow;
     text-shadow: 2px 0 black, -2px 0 black, 0 2px black, 0 -2px black,
@@ -81,7 +100,7 @@ header {
     text-align: center;
     cursor: pointer;
     text-shadow: 2px 0 black, -2px 0 black, 0 2px black, 0 -2px black,
-    1px 1px black, -1px -1px black, 1px -1px black, -1px 1px black
+    1px 1px black, -1px -1px black, 1px -1px black, -1px 1px black;
 }
 
 
