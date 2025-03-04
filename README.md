@@ -1,8 +1,6 @@
 # TODO:
 
-Add signiture styles and ASCII elements.
-
-Add feature to change the grid size between 16x16, 32x32, 64x64.
+###FIX BUTTON CONTAINER###
 
 Implement line drag feature to drag a straight/diagonal line from point A to B in any direction.
 
