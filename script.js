@@ -1,36 +1,40 @@
-
-
+// Select the grid container
 const gridContainer = document.querySelector('.drawing-grid-container');
 
-
+// Create grid cells and add event listeners
 for (let i = 0; i < 256; i++) {
     const cell = document.createElement('div');
     cell.classList.add('grid-cell');
-    cell.addEventListener('click', () => {              //ADDED EVENT LISTENER DURING CELL CREATION 
+    cell.addEventListener('click', () => {
         cell.style.backgroundColor = currentColor;
     });
     gridContainer.appendChild(cell);
 }
 
-const colorPalette = document.querySelector('.color-palette'); 
+// Select the color palette container
+const colorPalette = document.querySelector('.color-palette');
 let currentColor = "#000000";
 let isMouseDown = false;
-let lineMode = false;                        //ADDED TOGGLE FOR LINE MODE
+let lineMode = false;
 let startCell = null;
 
+// Mouse down event listener
 document.addEventListener('mousedown', () => {
     isMouseDown = true;
 });
 
+// Mouse up event listener
 document.addEventListener('mouseup', () => {
     isMouseDown = false;
 });
 
+// Toggle line mode
 document.getElementById('toggle-line-mode').addEventListener('click', () => {
     lineMode = !lineMode;
     document.getElementById('toggle-line-mode').innerText = lineMode ? "Line Mode: ON" : "Line Mode: OFF";
 });
 
+// Define color options
 const colors = [
     "#000000", "#0000AA", "#00AA00", "#00AAAA",
     "#AA0000", "#AA00AA", "#AA5500", "#AAAAAA",
@@ -38,67 +42,71 @@ const colors = [
     "#FF5555", "#FF55FF", "#FFFF55", "#FFFFFF"
 ];
 
-const clearselection = document.createElement('div');   //DESELECT BUTTON ADDED
-clearselection.classList.add('color-option');                      
-clearselection.style.backgroundColor = "transparent";              
-clearselection.style.border = "2px dashed black";                  
-clearselection.innerText = "X";
-clearselection.style.display = "flex";
-clearselection.style.alignItems = "center";
-clearselection.style.justifyContent = "center";
-clearselection.style.fontSize = "14px";
-clearselection.style.fontWeight = "bold";
-clearselection.style.cursor = "pointer";
+// Create deselect button
+const clearSelection = document.createElement('div');
+clearSelection.classList.add('color-option');
+clearSelection.style.backgroundColor = "transparent";
+clearSelection.style.border = "2px dashed black";
+clearSelection.innerText = "X";
+clearSelection.style.display = "flex";
+clearSelection.style.alignItems = "center";
+clearSelection.style.justifyContent = "center";
+clearSelection.style.fontSize = "14px";
+clearSelection.style.fontWeight = "bold";
+clearSelection.style.cursor = "pointer";
 
-clearselection.addEventListener('click', () => {
+// Deselect color event listener
+clearSelection.addEventListener('click', () => {
     currentColor = null;
-    console.log("Deselected colour")
+    console.log("Deselected color");
 });
+colorPalette.appendChild(clearSelection);
 
-colorPalette.appendChild(clearselection);
-
+// Create color options
 colors.forEach(color => {
-    const colorOption = document.createElement('div'); 
+    const colorOption = document.createElement('div');
     colorOption.classList.add('color-option');
     colorOption.style.backgroundColor = color;
 
     colorOption.addEventListener('click', () => {
         currentColor = color;
-        console.log("Selected Color:", currentColor); 
+        console.log("Selected Color:", currentColor);
     });
 
-    colorPalette.appendChild(colorOption); 
-}); 
+    colorPalette.appendChild(colorOption);
+});
 
+// Add event listeners to grid cells
 document.querySelectorAll('.grid-cell').forEach(cell => {
     cell.addEventListener('click', () => {
-        if (lineMode) {          //ADDED STRAIGHT LINE DRAWING FEATURE
+        if (lineMode) {
             if (!startCell) {
-                startCell = cell; 
+                startCell = cell;
             } else {
-                drawLine(startCell, cell); 
-                startCell = null; 
+                drawLine(startCell, cell);
+                startCell = null;
             }
         } else {
-            cell.style.backgroundColor = currentColor; 
+            cell.style.backgroundColor = currentColor;
         }
     });
 });
 
-  
-document.getElementById('clear-grid').addEventListener('click', () => {     //RESETS ALL GRID CELLS WHEN BUTTON IS CLICKED
+// Clear grid event listener
+document.getElementById('clear-grid').addEventListener('click', () => {
     document.querySelectorAll('.grid-cell').forEach(cell => {
-        cell.style.backgroundColor = ""
+        cell.style.backgroundColor = "";
     });
     console.log("Grid cleared");
 });
 
+// Draw line function
 function drawLine(start, end) {
     const gridCells = Array.from(document.querySelectorAll('.grid-cell'));
     const startIndex = gridCells.indexOf(start);
     const endIndex = gridCells.indexOf(end);
 
-    const gridSize = 16; 
+    const gridSize = 16;
 
     const startRow = Math.floor(startIndex / gridSize);
     const startCol = startIndex % gridSize;
@@ -110,11 +118,11 @@ function drawLine(start, end) {
 
     if (startRow === endRow) {
         console.log("Drawing a horizontal line...");
-        let minCol = Math.min(startCol, endCol);  
-        let maxCol = Math.max(startCol, endCol);  
+        let minCol = Math.min(startCol, endCol);
+        let maxCol = Math.max(startCol, endCol);
         for (let col = minCol; col <= maxCol; col++) {
             gridCells[startRow * gridSize + col].style.backgroundColor = currentColor;
-        }                                                    
+        }
     } else if (startCol === endCol) {
         console.log("Drawing a vertical line...");
         let minRow = Math.min(startRow, endRow);
@@ -125,21 +133,18 @@ function drawLine(start, end) {
     }
 }
 
-document.getElementById('toggle-grid').addEventListener('click', () => {        //LISTENS FOR BUTTON CLICKS, HIDES AND REVEALS GRID
+// Toggle grid visibility event listener
+document.getElementById('toggle-grid').addEventListener('click', () => {
     document.querySelectorAll('.grid-cell').forEach(cell => {
-        if (cell.style.border === "none" || cell.style.border === "") {
-            cell.style.border = "2px solid black";
-        } else {
-            cell.style.border = "none";
-        }
+        cell.style.border = cell.style.border === "none" || cell.style.border === "" ? "2px solid black" : "none";
     });
 });
 
+// Add hover effect to grid cells
 document.querySelectorAll('.grid-cell').forEach(cell => {
     let originalColor = "";
-    let isColored = false;  
+    let isColored = false;
 
-    
     cell.addEventListener('mouseover', () => {
         if (currentColor !== null && !isColored) {
             originalColor = cell.style.backgroundColor;
@@ -153,7 +158,6 @@ document.querySelectorAll('.grid-cell').forEach(cell => {
         }
     });
 
-    
     cell.addEventListener('mouseout', () => {
         if (!isColored) {
             cell.style.backgroundColor = originalColor;
@@ -161,16 +165,16 @@ document.querySelectorAll('.grid-cell').forEach(cell => {
         }
     });
 
-    
     cell.addEventListener('mousedown', () => {
         if (currentColor !== null) {
             cell.style.backgroundColor = currentColor;
-            cell.style.opacity = "1"; 
-            isColored = true;  
+            cell.style.opacity = "1";
+            isColored = true;
         }
     });
 });
 
+// Export art as PNG event listener
 document.getElementById('export-art').addEventListener('click', () => {
     const grid = document.querySelector('.drawing-grid-container');
 
@@ -183,6 +187,7 @@ document.getElementById('export-art').addEventListener('click', () => {
     console.log("Pixel art exported!");
 });
 
+// Save art to local storage event listener
 document.getElementById('save-art').addEventListener('click', () => {
     let savedGrid = [];
 
@@ -194,12 +199,13 @@ document.getElementById('save-art').addEventListener('click', () => {
     console.log("Pixel art saved!");
 });
 
+// Load art from local storage event listener
 document.getElementById('load-art').addEventListener('click', () => {
     let savedGrid = JSON.parse(localStorage.getItem("pixelArt"));
 
     if (savedGrid) {
         document.querySelectorAll('.grid-cell').forEach((cell, index) => {
-            cell.style.backgroundColor = savedGrid[index]; 
+            cell.style.backgroundColor = savedGrid[index];
         });
         console.log("Pixel art loaded!");
     } else {

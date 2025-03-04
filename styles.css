@@ -5,8 +5,11 @@
 }
 
 body {
-    font-family: 'Press Start 2P', sans-serif;
+    font-family: 'Press Start 2P', monospace;
+    background-color: rgb(29, 18, 245);
+    color: #0f0;
 }
+
 
 header {
     text-align: center;
@@ -17,8 +20,14 @@ header {
 }
 
 .header-title {
-    color: blueviolet;
-    border: 5px solid rgb(255, 238, 2);
+    color: yellow;
+    text-shadow: 2px 0 black, -2px 0 black, 0 2px black, 0 -2px black,
+    1px 1px black, -1px -1px black, 1px -1px black, -1px 1px black;
+}
+
+.header-subtitle, .header-paragraph {
+    text-shadow: 2px 0 black, -2px 0 black, 0 2px black, 0 -2px black,
+    1px 1px black, -1px -1px black, 1px -1px black, -1px 1px black
 }
 
 .grid-wrapper {
@@ -42,8 +51,7 @@ header {
 .grid-cell {
     width: 20px;
     height: 20px;
-    background-color: lightblue;
-    border: 2px solid rgb(0, 0, 0);
+    background-color: white;
 }
 
 .color-palette {
@@ -62,7 +70,7 @@ header {
     cursor: pointer;
 }
                                          /*STYLED CLEAR GRID BUTTON TO MATCH HEADER*/
-#clear-grid {
+#clear-grid, #toggle-line-mode, #toggle-grid {
     font-family: 'Press Start 2p';
     background-color: cyan;
     color: yellow;
@@ -72,42 +80,21 @@ header {
     display: block;
     text-align: center;
     cursor: pointer;
+    text-shadow: 2px 0 black, -2px 0 black, 0 2px black, 0 -2px black,
+    1px 1px black, -1px -1px black, 1px -1px black, -1px 1px black
 }
 
-#toggle-line-mode {                    /*STYLED TOGGLE LINE BUTTON TO MATCH THEME*/
-    font-family: 'Press Start 2p';
-    background-color: cyan;
-    color: yellow;
-    border: 2px solid yellow;
-    padding: 10px;
-    margin: 10px auto;
-    display: block;
-    text-align: center;
-    cursor: pointer;
-}
-
-#toggle-grid {                             /*STYLED THE TOGGLE GRID BUTTON FOR CORRESPONDANCE*/
-    font-family: 'Press Start 2P';
-    background-color: cyan;
-    color: yellow;
-    border: 2px solid yellow;
-    padding: 10px;
-    margin: 10px auto;
-    display: block;
-    text-align: center;
-    cursor: pointer;
-}
 
 .button-container {
     position: absolute;
-    bottom: 0px;
-    right: -210px;
+    bottom: -330px;
+    left: 387px;
     display: flex;
     flex-direction: column;
     gap: 10px;
 }
 
-#save-art, #load-art {
+#save-art, #load-art, #export-art {
     font-family: 'Press Start 2P';
     background-color:cyan;
     color: yellow;
@@ -115,15 +102,12 @@ header {
     padding: 10px;
     text-align: center;
     cursor: pointer;
+    text-shadow: 2px 0 black, -2px 0 black, 0 2px black, 0 -2px black,
+    1px 1px black, -1px -1px black, 1px -1px black, -1px 1px black
 }
 
-#export-art {
-    font-family: 'Press Start 2P';
-    background-color: cyan;
+.footer-message1, .footer-message2, .footer-link {
+    text-shadow: 2px 0 black, -2px 0 black, 0 2px black, 0 -2px black,
+    1px 1px black, -1px -1px black, 1px -1px black, -1px 1px black;
     color: yellow;
-    border: 2px solid yellow;
-    padding: 10px;
-    text-align: center;
-    cursor: pointer;
-    display: block;
 }

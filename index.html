@@ -9,38 +9,43 @@
         <link rel="icon" type="favicon" href="favicon.ico"> <!-- Added favicon link -->
     </head>
     <body>
-        <header>
+
+        <header class="header-border">
             <div class="header-container">
                 <div class="header-title">
-            <h1>Simple Pixel Art Program</h1></div>
-
-                 <div class="header-subtitle">
-            <h3>Inspired by the simplistic Temple OS 8 bit art style.</h3></div>
-
-            <div class="header-paragraph">
-            <p>I wrote this program to create my own icons while learning a few things along the way.</p></div>
+                    <h1>Pixel Editor</h1>
+                </div>
+                <div class="header-subtitle">
+                    <h3>Inspired by the simplistic TempleOS 16 colour palette.</h3>
+                </div>
+                <div class="header-paragraph">
+                    <p>I wrote this program in order to create my own icons and pixel art for future projects.</p>
+                </div>
             </div>
         </header>
 
-        <div class="color-palette"></div>
-
-        <button id="toggle-line-mode">Line Mode: OFF</button>  <!-- ADDED TOGGLE LINE MODE BUTTON-->
-        <button id="clear-grid"> clear grid</button>  <!--ADDED BUTTON TO CLEAR ENTIRE GRID-->
-
-        <button id="toggle-grid">Toggle Grid</button>  <!-- ADDED "TOGGLE GRID" BUTTON-->
-
-        <div class="grid-wrapper">
-            <div class="drawing-grid-container"></div>
-            <div class="button-container">
-                <button id="save-art">Save Art</button>
-                <button id="load-art">Load Art</button>
-                <button id="export-art">Export as PNG</button>
-            </div>
+        <div class="color-palette">
+            <div class="color-square" style="background-color: #ff0000;"></div>
+            <div class="color-square" style="background-color: #00ff00;"></div>
+            <div class="color-square" style="background-color: #0000ff;"></div>
+            <!-- Add more color squares as needed -->
         </div>
 
-        <div class="fav-info"><p>Browsers do not support ICO creation, but you can download a PNG file and covert it yourself.</p>
-            <p>use websites like <a href="https://favicon.io/" target="_blank">favicon.io</a></p></div>
-        
+        <button id="toggle-line-mode">Line Mode: OFF</button>
+        <button id="clear-grid">Clear Grid</button>
+        <button id="toggle-grid">Toggle Grid</button>
+
+        <div class="drawing-grid-container"></div>
+        <div class="button-container">
+            <button id="save-art" class="action-button">Save Art</button>
+            <button id="load-art" class="action-button">Load Art</button>
+            <button id="export-art" class="action-button">Export as PNG</button>
+        </div>
+
+        <div class="footer">
+        <p class="footer-message1">Browsers do not support ICO creation, but you can download a PNG file and convert it yourself.</p>
+        <p class="footer-message2">Use websites like <a href="https://favicon.io/" target="_blank" class="footer-link">favicon.io</a></p>
+        </div>
 
         <script src="script.js"></script>
     </body>
