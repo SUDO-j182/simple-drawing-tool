@@ -107,10 +107,28 @@ header {
 .button-container {
     position: absolute;
     bottom: 100px;
-    right: 387px;
+    right: 20px; /* Default value for smaller screens */
     display: flex;
     flex-direction: column;
     gap: 10px;
+}
+
+@media (min-width: 768px) {
+    .button-container {
+        right: 50px; /* Adjust for medium screens */
+    }
+}
+
+@media (min-width: 1024px) {
+    .button-container {
+        right: 100px; /* Adjust for larger screens */
+    }
+}
+
+@media (min-width: 1440px) {
+    .button-container {
+        right: 387px; /* Original value for very large screens */
+    }
 }
 
 #save-art, #load-art, #export-art {
