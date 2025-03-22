@@ -131,6 +131,13 @@ header {
     }
 }
 
+@media (max-width: 767px) {
+    .button-container {
+        bottom: -37px; /* Adjust bottom position for mobile */
+        right: -137px;  /* Adjust right position for mobile */
+    }
+}
+
 #save-art, #load-art, #export-art {
     font-family: 'Press Start 2P';
     background-color:cyan;
